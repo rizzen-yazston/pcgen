@@ -97,7 +97,6 @@ public final class SettingsHandler
 	public static GameMode game = new GameMode("default");
 	private static Dimension kitSelectorDimension = null;
 	private static Point kitSelectorLeftUpperCorner = null;
-	private static boolean useWaitCursor = true;
 	private static boolean loadURLs = false;
 	private static boolean hpMaxAtFirstLevel = true;
 	private static boolean hpMaxAtFirstClassLevel = true;
@@ -113,7 +112,6 @@ public final class SettingsHandler
 	private static boolean gearTab_AllowDebt = false;
 	private static int gearTab_SellRate = Constants.DEFAULT_GEAR_TAB_SELL_RATE;
 	private static int gearTab_BuyRate = Constants.DEFAULT_GEAR_TAB_BUY_RATE;
-	private static boolean isROG = false;
 	private static Point leftUpperCorner = null;
 	private static int windowState = Frame.NORMAL;
 	private static int looknFeel = 1; // default to Java L&F
@@ -913,7 +911,6 @@ public final class SettingsHandler
 		setPrereqFailColor(getPCGenOption("prereqFailColor", Color.red.getRGB())); //$NON-NLS-1$
 		setPrereqQualifyColor(getPCGenOption("prereqQualifyColor", SystemColor.text.getRGB())); //$NON-NLS-1$
 		setPreviewTabShown(getPCGenOption("previewTabShown", true)); //$NON-NLS-1$
-		setROG(getPCGenOption("isROG", false)); //$NON-NLS-1$
 		setSaveCustomInLst(getPCGenOption("saveCustomInLst", false)); //$NON-NLS-1$
 		setSaveOutputSheetWithPC(getPCGenOption("saveOutputSheetWithPC", false)); //$NON-NLS-1$
 		setPrintSpellsWithPC(getPCGenOption("printSpellsWithPC", true)); //$NON-NLS-1$
@@ -951,7 +948,6 @@ public final class SettingsHandler
 		setSpellMarketPriceAdjusted(getPCGenOption("spellMarketPriceAdjusted", false)); //$NON-NLS-1$
 		setTabPlacement(getOptionTabPlacement("tabPlacement", SwingConstants.BOTTOM)); //$NON-NLS-1$
 		setUseHigherLevelSlotsDefault(getPCGenOption("useHigherLevelSlotsDefault", false)); //$NON-NLS-1$
-		setUseWaitCursor(getPCGenOption("useWaitCursor", true)); //$NON-NLS-1$
 		setWantToLoadMasterworkAndMagic(getPCGenOption("loadMasterworkAndMagicFromLst", false)); //$NON-NLS-1$
 		setWeaponProfPrintout(getPCGenOption("weaponProfPrintout", Constants.DEFAULT_PRINTOUT_WEAPONPROF));
 
@@ -1196,7 +1192,6 @@ public final class SettingsHandler
 		setPCGenOption("spellMarketPriceAdjusted", isSpellMarketPriceAdjusted()); //$NON-NLS-1$
 		setPCGenOption("tabPlacement", convertTabPlacementToString(tabPlacement)); //$NON-NLS-1$
 		setPCGenOption("useHigherLevelSlotsDefault", isUseHigherLevelSlotsDefault()); //$NON-NLS-1$
-		setPCGenOption("useWaitCursor", getUseWaitCursor()); //$NON-NLS-1$
 		setPCGenOption("weaponProfPrintout", SettingsHandler.getWeaponProfPrintout()); //$NON-NLS-1$
 		setPCGenOption("outputDeprecationMessages", outputDeprecationMessages()); //$NON-NLS-1$
 		setPCGenOption("inputUnconstructedMessages", inputUnconstructedMessages()); //$NON-NLS-1$
@@ -1369,15 +1364,6 @@ public final class SettingsHandler
 	public static boolean getPrintSpellsWithPC()
 	{
 		return printSpellsWithPC;
-	}
-
-	/**
-	 * I guess only ROG can document this?
-	 * @return TRUR if ROG, else FALSE
-	 */
-	public static boolean isROG()
-	{
-		return isROG;
 	}
 
 	/**
@@ -1689,16 +1675,6 @@ public final class SettingsHandler
 	public static void setUseHigherLevelSlotsDefault(boolean useHigherLevelSlotsDefault)
 	{
 		SettingsHandler.useHigherLevelSlotsDefault = useHigherLevelSlotsDefault;
-	}
-
-	public static void setUseWaitCursor(final boolean b)
-	{
-		useWaitCursor = b;
-	}
-
-	public static boolean getUseWaitCursor()
-	{
-		return useWaitCursor;
 	}
 
 	public static void setWantToLoadMasterworkAndMagic(final boolean bFlag)
@@ -2147,15 +2123,6 @@ public final class SettingsHandler
 	private static Double getPCGenOption(final String optionName, final double defaultValue)
 	{
 		return Double.valueOf(getPCGenOption(optionName, Double.toString(defaultValue)));
-	}
-
-	/**
-	 * What does this do???
-	 * @param ROG
-	 */
-	private static void setROG(final boolean ROG)
-	{
-		isROG = ROG;
 	}
 
 	/**
